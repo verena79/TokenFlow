@@ -4,12 +4,18 @@
   "description": "My webpack project",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "karma start",
     "build": "webpack --mode=production --node-env=production",
     "build:dev": "webpack --mode=development",
     "build:prod": "webpack --mode=production --node-env=production",
     "watch": "webpack --watch",
-    "serve": "webpack serve"
+    "serve": "webpack serve",
+    "all": "run lint test bundle",
+    "bundle": "webpack --mode production",
+    "bundle:watch": "webpack -w",
+    "start": "webpack serve --content-base ./example --open",
+    "lint": "eslint .",
+    "dev": "npm test -- --auto-watch --no-single-run"
   },
   "author": "",
   "license": "ISC",
