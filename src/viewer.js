@@ -4,7 +4,7 @@ import BpmnViewer from 'bpmn-js/lib/NavigatedViewer';
 
 import fileDrop from 'file-drops';
 
-import exampleXML from '../ressources/example.bpmn';
+import exampleXML from '../ressources/exposee.bpmn';
 
 
 const url = new URL(window.location.href);
