@@ -1,21 +1,105 @@
-import example from '../ressources/example.bpmn'
-import BpmnViewer from 'bpmn-js';
+import TokenSimulationModule from 'bpmn-js-token-simulation/lib/viewer';
 
-var viewer = new BpmnViewer({
-  container: '#canvas'
+import BpmnViewer from 'bpmn-js/lib/NavigatedViewer';
+
+import fileDrop from 'file-drops';
+
+import exampleXML from '../ressources/example.bpmn';
+
+
+const url = new URL(window.location.href);
+
+const persistent = url.searchParams.has('p');
+const active = url.searchParams.has('e');
+
+const initialDiagram = (() => {
+  try {
+    return persistent && localStorage['diagram-xml'] || exampleXML;
+  } catch (err) {
+    return exampleXML;
+  }
+})();
+
+function hideDropMessage() {
+  const dropMessage = document.querySelector('.drop-message');
+
+  dropMessage.style.display = 'none';
+}
+
+if (persistent) {
+  hideDropMessage();
+}
+
+const ExampleModule = {
+  __init__: [
+    [ 'eventBus', 'bpmnjs', 'toggleMode', function(eventBus, bpmnjs, toggleMode) {
+
+      if (persistent) {
+        eventBus.on('commandStack.changed', function() {
+          bpmnjs.saveXML().then(result => {
+            localStorage['diagram-xml'] = result.xml;
+          });
+        });
+      }
+
+      /* if ('history' in window) {
+        eventBus.on('tokenSimulation.toggleMode', event => {
+
+          if (event.active) {
+            url.searchParams.set('e', '1');
+          } else {
+            url.searchParams.delete('e');
+          }
+
+          history.replaceState({}, document.title, url.toString());
+        });
+      } */
+
+      eventBus.on('diagram.init', 500, () => {
+        toggleMode.toggleMode(active);
+      });
+    } ]
+  ]
+};
+
+const viewer = new BpmnViewer({
+  container: '#canvas',
+  additionalModules: [
+    ExampleModule,
+    TokenSimulationModule
+  ],
+  keyboard: {
+    bindTo: document
+  }
 });
 
+viewer.openDiagram = function(diagram) {
+  return this.importXML(diagram)
+    .then(({ warnings }) => {
+      if (warnings.length) {
+        console.warn(warnings);
+      }
 
-viewer.importXML(example).then(function(result) {
+      if (persistent) {
+        localStorage['diagram-xml'] = diagram;
+      }
 
-  const { warnings } = result;
+      this.get('canvas').zoom('fit-viewport');
+    })
+    .catch(err => {
+      console.error(err);
+    });
+};
 
-  console.log('success !', warnings);
+document.body.addEventListener('dragover', fileDrop('Open BPMN diagram', function(files) {
 
-  viewer.get('canvas').zoom('fit-viewport');
-}).catch(function(err) {
+  // files = [ { name, contents }, ... ]
 
-  const { warnings, message } = err;
+  if (files.length) {
+    hideDropMessage();
+    viewer.openDiagram(files[0].contents);
+  }
 
-  console.log('something went wrong:', warnings, message);
-});
+}), false);
+
+viewer.openDiagram(initialDiagram);

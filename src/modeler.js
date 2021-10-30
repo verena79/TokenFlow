@@ -41,10 +41,10 @@ const ExampleModule = {
         });
       }
 
-      if ('history' in window) {
+      /* if ('history' in window) {
         eventBus.on('tokenSimulation.toggleMode', event => {
 
-          if (event.active) {
+           if (event.active) {
             url.searchParams.set('e', '1');
           } else {
             url.searchParams.delete('e');
@@ -52,7 +52,7 @@ const ExampleModule = {
 
           history.replaceState({}, document.title, url.toString());
         });
-      }
+      } */
 
       eventBus.on('diagram.init', 500, () => {
         toggleMode.toggleMode(active);
