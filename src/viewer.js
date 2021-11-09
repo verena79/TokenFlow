@@ -6,7 +6,6 @@ import fileDrop from 'file-drops';
 
 import exampleXML from '../ressources/exposee.bpmn';
 
-
 const url = new URL(window.location.href);
 
 const persistent = url.searchParams.has('p');
@@ -103,3 +102,43 @@ document.body.addEventListener('dragover', fileDrop('Open BPMN diagram', functio
 }), false);
 
 viewer.openDiagram(initialDiagram);
+
+const canvas = document.getElementById("canvas");
+const recordBtn = document.getElementById("startCapture");
+
+let recording = false;
+let mediaRecorder;
+let recordedChunks;
+
+recordBtn.addEventListener("click", () => {
+  recording = !recording;
+    if(recording){
+            recordBtn.textContent = "Stop";
+            const stream = canvas.captureStream(25);
+            mediaRecorder = new MediaRecorder(stream, {
+                mimeType: 'video/webm;codecs=vp9',
+                                ignoreMutedMedia: true
+            });
+            recordedChunks = [];
+            mediaRecorder.ondataavailable = e => {
+                if(e.data.size > 0){
+                    recordedChunks.push(e.data);
+                }
+            };
+            mediaRecorder.start();
+        } else {
+            recordBtn.textContent = "Record"
+            mediaRecorder.stop();
+            setTimeout(() => {
+                const blob = new Blob(recordedChunks, {
+                    type: "video/webm"
+                });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement("a");
+                a.href = url;
+                a.download = "recording.webm";
+                a.click();
+                URL.revokeObjectURL(url);
+            },0);
+        }
+});
