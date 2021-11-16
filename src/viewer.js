@@ -6,7 +6,7 @@ import fileDrop from 'file-drops';
 
 import exampleXML from '../ressources/exposee.bpmn';
 
-//import recordScreen from 'record-screen';
+import html2canvas from 'html2canvas/dist/html2canvas'
 
 const url = new URL(window.location.href);
 
@@ -105,28 +105,19 @@ document.body.addEventListener('dragover', fileDrop('Open BPMN diagram', functio
 
 viewer.openDiagram(initialDiagram);
 
-/* const canvas = document.getElementById("canvas");
-const recordBtn = document.getElementById("startCapture");
-const recordstopBtn = document.getElementById("stopCapture")
+viewer.DownloadBase64File = function(contentType, base64Data, fileName){
+  const linkSource = `data:${contentType};base64,${base64Data}`;
+  const downloadLink = document.createElement("a");
+  downloadLink.href = linkSource;
+  downloadLink.download = fileName;
+  downloadLink.click();
+  }
 
-
-recordBtn.addEventListener("click", () => {
-  recording.promise
-  .then(result => {
-    // Screen recording is done
-    process.stdout.write(result.stdout)
-    process.stderr.write(result.stderr)
-  })
-  .catch(error => {
-    // Screen recording has failed
-    console.error(error)
+document.getElementById('downloadBtn').addEventListener("click", function() {
+  console.log('btn clicked')
+  let c = document.getElementById('canvas');
+  html2canvas(c).then((canvas)=>{
+    var t = canvas.toDataURL().replace("data:image/png;base64,", "");
+    viewer.DownloadBase64File('image/png',t,'image');
   })
 });
-
-const recording = recordScreen('/tmp/test.mp4', {
-  resolution: '1440x900' // Display resolution
-})
-
-recordstopBtn.addEventListener('click', () => {
-  recording.stop();
-}) */

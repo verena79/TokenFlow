@@ -15,15 +15,14 @@
     <link rel="stylesheet" href="./dist/dist/vendor/bpmn-js/assets/diagram-js.css"/>
     <link rel="stylesheet" href="./dist/dist/vendor/bpmn-js-token-simulation/assets/css/bpmn-js-token-simulation.css" />
     <link rel="stylesheet" href="./style.css"/>
-   
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
   
     <title>Prototyp Viewer</title>
 </head>
-<body>
+<body id="body">
     <h1>Viewer</h1>
 
-    <button id="startCapture" class="fa fa-play-circle-o" style="size: 5cm;"></button>
-    <button id="stopCapture" class="fa fa-pause-circle-o" style="size: 5cm"></button>
+    <button id="downloadBtn" class="fa fa-download" style="size: 5cm;"></button>
   
   <div id="canvas"></div>
 
