@@ -8,6 +8,8 @@ import exampleXML from '../ressources/exposee.bpmn';
 
 import html2canvas from 'html2canvas/dist/html2canvas'
 
+import 'bootstrap';
+
 const url = new URL(window.location.href);
 
 const persistent = url.searchParams.has('p');

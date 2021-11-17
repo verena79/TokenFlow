@@ -9,7 +9,7 @@ html, body, #canvas {
 
 .links {
   position: absolute;
-  top: 24px;
+  top: 60px;
   right: 24px;
 }
 
@@ -19,13 +19,13 @@ html, body, #canvas {
   padding: 6px;
   font-size: 16px;
   border-radius: 2px;
-  background-color: var(--token-simulation-silver-darken-94, #EFEFEF);
+  background-color: var(--token-simulation-silver-darken-94, #c1dfec);
   text-decoration: none;
 }
 
 .link:hover {
   color: var(--token-simulation-white, #FFFFFF);
-  background-color: var(--token-simulation-green-base-44, #10D070);
+  background-color: var(--token-simulation-green-base-44, #0e8d9e);
 }
 
 .links .link + .link {
@@ -36,10 +36,10 @@ html, body, #canvas {
 
 .drop-message {
   position: absolute;
-  top: 24px;
+  top: 60px;
   left: 50%;
   transform: translateX(-50%);
-  background-color: var(--token-simulation-silver-darken-94, #EFEFEF);
+  background-color: var(--token-simulation-silver-darken-94, #c1dfec);
   border-radius: 2px;
   padding: 6px 12px;
   font-size: 16px;
@@ -77,3 +77,16 @@ html, body, #canvas {
   display: table-cell;
   vertical-align: middle;
 }
+
+.carousel-inner > .item > img, 
+.carousel-inner > .item > a > img{
+width: 80%; 
+margin: auto;
+}
+
+div.c-wrapper{
+  width: 80%;
+  margin: auto;
+}
+
+.carousel .carousel-indicators .customIndicator {background-color: gray;}

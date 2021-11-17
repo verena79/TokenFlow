@@ -1,7 +1,7 @@
 @import '../font-awesome/css/font-awesome.min.css';
 
 :root {
-  --token-simulation-green-base-44: #10D070;
+  --token-simulation-green-base-44: #10bad0;
   --token-simulation-grey-base-40: #666666;
   --token-simulation-grey-darken-30: #212121;
   --token-simulation-grey-lighten-56: #909090;
@@ -18,7 +18,7 @@
 }
 
 .bjs-container.simulation {
-  border-color: var(--token-simulation-green-base-44, #10D070);
+  border-color: var(--token-simulation-green-base-44, #10bad0);
 }
 
 .bjs-container.simulation.paused {
@@ -48,7 +48,7 @@
 
 .context-pad:not(.disabled):hover {
   width: 40px;
-  background-color: var(--token-simulation-green-base-44, #10D070);
+  background-color: var(--token-simulation-green-base-44, #10bad0);
   opacity: 1;
   color: var(--token-simulation-white, #FFFFFF);
 }
@@ -103,7 +103,7 @@
 .token-count.waiting {
   color: var(--token-simulation-white, #FFFFFF);
   font-family: 'Arial', sans-serif;
-  background-color: var(--token-simulation-green-base-44, #10D070);
+  background-color: var(--token-simulation-green-base-44, #10bad0);
 }
 
 @keyframes jump {
@@ -136,7 +136,7 @@
 }
 
 .notifications .notification.success {
-  background-color: var(--token-simulation-green-base-44, #10D070);
+  background-color: var(--token-simulation-green-base-44, #10bad0);
   color: var(--token-simulation-white, #FFFFFF);
 }
 
@@ -202,7 +202,7 @@
 }
 
 .element-notification.success {
-  background-color: var(--token-simulation-green-base-44, #10D070);
+  background-color: var(--token-simulation-green-base-44, #10bad0);
   color: var(--token-simulation-white, #FFFFFF);
 }
 
@@ -226,7 +226,7 @@
 
 .bjs-container.simulation .toggle-mode,
 .toggle-mode:hover {
-  background-color: var(--token-simulation-green-base-44, #10D070);
+  background-color: var(--token-simulation-green-base-44, #10bad0);
   color: var(--token-simulation-white, #FFFFFF);
 }
 
@@ -279,12 +279,12 @@
 .token-simulation-palette .entry:not(.disabled):hover {
   width: 40px;
   color: var(--token-simulation-white, #FFFFFF);
-  background-color: var(--token-simulation-green-base-44, #10D070);
+  background-color: var(--token-simulation-green-base-44, #10bad0);
 }
 
 .token-simulation-palette .entry.active {
   color: var(--token-simulation-white, #FFFFFF);
-  background-color: var(--token-simulation-green-base-44, #10D070);
+  background-color: var(--token-simulation-green-base-44, #10bad0);
 }
 
 .token-simulation-palette .entry.disabled {
@@ -309,7 +309,7 @@
 }
 
 .token-simulation-log .header {
-  background-color: var(--token-simulation-green-base-44, #10D070);
+  background-color: var(--token-simulation-green-base-44, #10bad0);
   padding: 6px 8px;
   color: var(--token-simulation-white, #FFFFFF);
   height: 30px;
@@ -356,7 +356,7 @@
 }
 
 .token-simulation-log .entry.success {
-  background-color: var(--token-simulation-green-base-44, #10D070);
+  background-color: var(--token-simulation-green-base-44, #10bad0);
   color: var(--token-simulation-white, #FFFFFF);
 }
 
@@ -485,6 +485,6 @@
 
 .set-animation-speed .animation-speed-buttons .animation-speed-button.active,
 .set-animation-speed .animation-speed-buttons .animation-speed-button:hover {
-  background-color: var(--token-simulation-green-base-44, #10D070);
+  background-color: var(--token-simulation-green-base-44, #10bad0);
   color: var(--token-simulation-white, #FFFFFF);
 }
