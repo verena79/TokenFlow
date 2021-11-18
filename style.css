@@ -36,13 +36,13 @@ html, body, #canvas {
 
 .drop-message {
   position: absolute;
-  top: 60px;
+  top: 70px;
   left: 50%;
   transform: translateX(-50%);
   background-color: var(--token-simulation-silver-darken-94, #c1dfec);
   border-radius: 2px;
   padding: 6px 12px;
-  font-size: 16px;
+  font-size: 13px;
   color: var(--token-simulation-grey-darken-30, #212121);
   user-select: none;
 }
@@ -90,3 +90,4 @@ div.c-wrapper{
 }
 
 .carousel .carousel-indicators .customIndicator {background-color: gray;}
+
