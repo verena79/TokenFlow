@@ -91,6 +91,7 @@ viewer.openDiagram = function(diagram) {
     })
     .catch(err => {
       console.error(err);
+      alert('Something went wrong. Check if your file is a bpmn-file')
     });
 };
 
