@@ -10,6 +10,8 @@ import html2canvas from 'html2canvas/dist/html2canvas'
 
 import 'bootstrap';
 
+//js-File that contains the business logic behind the bpmn diagram visualization
+
 const url = new URL(window.location.href);
 
 const persistent = url.searchParams.has('p');
@@ -23,6 +25,7 @@ const initialDiagram = (() => {
   }
 })();
 
+//Hint for dropping a new bpmn-file
 function hideDropMessage() {
   const dropMessage = document.querySelector('.drop-message');
 
@@ -44,19 +47,6 @@ const ExampleModule = {
           });
         });
       }
-
-      /* if ('history' in window) {
-        eventBus.on('tokenSimulation.toggleMode', event => {
-
-          if (event.active) {
-            url.searchParams.set('e', '1');
-          } else {
-            url.searchParams.delete('e');
-          }
-
-          history.replaceState({}, document.title, url.toString());
-        });
-      } */
 
       eventBus.on('diagram.init', 500, () => {
         toggleMode.toggleMode(active);
@@ -96,8 +86,6 @@ viewer.openDiagram = function(diagram) {
 
 document.body.addEventListener('dragover', fileDrop('Open BPMN diagram', function(files) {
 
-  // files = [ { name, contents }, ... ]
-
   if (files.length) {
     hideDropMessage();
     viewer.openDiagram(files[0].contents);
@@ -107,6 +95,7 @@ document.body.addEventListener('dragover', fileDrop('Open BPMN diagram', functio
 
 viewer.openDiagram(initialDiagram);
 
+//download function for download button
 viewer.DownloadBase64File = function(contentType, base64Data, fileName){
   const linkSource = `data:${contentType};base64,${base64Data}`;
   const downloadLink = document.createElement("a");
@@ -115,6 +104,7 @@ viewer.DownloadBase64File = function(contentType, base64Data, fileName){
   downloadLink.click();
   }
 
+//download a screenshot of the bpmn model (canvas) when button is clicked
 document.getElementById('downloadBtn').addEventListener("click", function() {
   console.log('btn clicked')
   let c = document.getElementById('canvas');
