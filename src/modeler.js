@@ -6,8 +6,6 @@ import fileDrop from 'file-drops';
 
 import exampleXML from '../ressources/exposee.bpmn';
 
-import BpmnColorPickerModule from 'bpmn-js-color-picker';
-
 const url = new URL(window.location.href);
 
 const persistent = url.searchParams.has('p');
@@ -67,8 +65,7 @@ const modeler = new BpmnModeler({
   container: '#canvas',
   additionalModules: [
     TokenSimulationModule,
-    ExampleModule,
-    BpmnColorPickerModule
+    ExampleModule
   ],
   keyboard: {
     bindTo: document
