@@ -8,6 +8,7 @@ and thus creates different scenarios. The concept of tokens flowing through a pr
 to understand the meaning and execution  of a BPMN model. Drop your own model in the visualize tap and start
 your token simulation.
 
+![path](https://user-images.githubusercontent.com/73220935/144046603-eb74cb20-30bc-481b-a9e5-4c1d3c51566f.jpg)
 
 <h3>Motivation:</h3>
 
